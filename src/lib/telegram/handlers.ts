@@ -111,8 +111,4 @@ export default function telegramEventHandler(bot: Telegraf<BotContext>) {
   });
 
   bot.on("text", getDescription, getAmount);
-
-  // Enable graceful stop
-  process.once("SIGINT", () => bot.stop("SIGINT"));
-  process.once("SIGTERM", () => bot.stop("SIGTERM"));
 }

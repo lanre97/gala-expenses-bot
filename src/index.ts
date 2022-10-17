@@ -4,10 +4,12 @@ import telegramBot from "./lib/telegram";
 
 config();
 
-telegramBot().then(() => {
-  console.log("Bot started");
-});
+const bot = telegramBot();
 
 process.on("error", (error) => {
   console.error(error);
 });
+
+// Enable graceful stop
+process.once("SIGINT", () => bot.stop("SIGINT"));
+process.once("SIGTERM", () => bot.stop("SIGTERM"));

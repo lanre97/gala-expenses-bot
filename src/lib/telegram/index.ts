@@ -15,5 +15,6 @@ export default function telegramBot() {
   const session = getSession();
   bot.use(session.middleware());
   telegramEventHandler(bot as unknown as Telegraf<BotContext>);
-  return bot.launch();
+  bot.launch().then(() => console.log("Bot started"));
+  return bot;
 }
