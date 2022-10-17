@@ -1,22 +1,18 @@
 {
-  "name": "typescript-basic-skeleton",
-  "version": "2.0.0",
-  "description": "Bootstrap your new TypeScript project with the bare minimum dependencies",
+  "name": "gala-expenses-bot",
+  "version": "1.0.0",
+  "description": "",
   "scripts": {
     "lint": "eslint --ignore-path .gitignore . --ext .ts",
     "lint:fix": "npm run lint -- --fix",
-    "test": "jest"
+    "test": "jest",
+    "tsc": "tsc",
+    "build": "npm run tsc",
+    "start": "node ./build/index.js",
+    "dev": "ts-node-dev --poll --respawn --transpile-only ./src/index.ts"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/CodelyTV/typescript-basic-skeleton.git"
-  },
-  "author": "codelytv",
+  "author": "flavioontaneda",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/CodelyTV/typescript-basic-skeleton/issues"
-  },
-  "homepage": "https://github.com/CodelyTV/typescript-basic-skeleton#readme",
   "devDependencies": {
     "@swc/core": "^1.2.172",
     "@swc/jest": "^0.2.20",
@@ -31,6 +27,15 @@
     "eslint-plugin-simple-import-sort": "^7.0.0",
     "jest": "^28.0.1",
     "prettier": "^2.6.2",
+    "prisma": "^4.4.0",
     "typescript": "^4.6.3"
+  },
+  "dependencies": {
+    "@prisma/client": "^4.4.0",
+    "dayjs": "^1.11.5",
+    "dotenv": "^16.0.3",
+    "telegraf": "^4.10.0",
+    "telegraf-session-local": "^2.1.0",
+    "ts-node-dev": "^2.0.0"
   }
 }
