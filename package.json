@@ -8,6 +8,7 @@
     "test": "jest",
     "tsc": "tsc",
     "build": "npm run tsc",
+    "prisma": "npx prisma generate",
     "start": "node ./build/index.js",
     "dev": "ts-node-dev --poll --respawn --transpile-only ./src/index.ts"
   },
