@@ -63,7 +63,11 @@ export default function telegramEventHandler(bot: Telegraf<BotContext>) {
     });
     const listMessage = variableExpends
       .map(
-        (variableExpends) =>
+        (variableExpends: {
+          description: string | null;
+          amount: number | null;
+          createdAt: Date | null;
+        }) =>
           `- ${variableExpends.description} - S/. ${
             variableExpends.amount
           } - ${dayjs(variableExpends.createdAt).format("DD/MM/YYYY")}`
@@ -88,7 +92,8 @@ export default function telegramEventHandler(bot: Telegraf<BotContext>) {
       },
     });
     const total = variableExpends.reduce(
-      (total, variableExpends) => total + variableExpends.amount,
+      (total: number, variableExpends: { amount: number }) =>
+        total + variableExpends.amount,
       0
     );
     ctx.reply(`Total gastado en el mes: S/. ${total}`);
