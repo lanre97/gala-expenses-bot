@@ -15,6 +15,17 @@ export default function telegramBot() {
   const session = getSession();
   bot.use(session.middleware());
   telegramEventHandler(bot as unknown as Telegraf<BotContext>);
-  bot.launch().then(() => console.log("Bot started"));
+  bot
+    .launch(
+      process.env.NODE_ENV === "production"
+        ? {
+            webhook: {
+              domain: process.env.WEBHOOK_DOMAIN || "",
+              port: Number(process.env.PORT || 3000),
+            },
+          }
+        : undefined
+    )
+    .then(() => console.log("Bot started"));
   return bot;
 }
