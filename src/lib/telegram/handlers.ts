@@ -54,12 +54,10 @@ export default function telegramEventHandler(bot: Telegraf<BotContext>) {
         description: true,
         createdAt: true,
       },
-      where: {
-        createdAt: {
-          gte: dayjs().startOf("month").toDate(),
-          lte: dayjs().endOf("month").toDate(),
-        },
+      orderBy: {
+        createdAt: "desc",
       },
+      take: 31,
     });
     const listMessage = variableExpends
       .map(
